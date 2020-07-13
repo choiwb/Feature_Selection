@@ -79,8 +79,8 @@ y_pred = model.predict(X_test)
 # Confusion Matrix의 4가지 결과값 도출
 cm = confusion_matrix(Y_test, y_pred)
 
-tp = cm[0,0]
-tn = cm[1,1]
+tn = cm[0,0]
+tp = cm[1,1]
 fp = cm[0,1]
 fn = cm[1,0]
 
@@ -89,10 +89,9 @@ prec = tp / (tp+fp)
 sen = tp / (tp+fn)
 spec = tn / (fp + tn)
 
-print('정확도 (Accuracy): %f , 정밀도 (Precision): %f , 민감도 (Sensitivity): %f , 특이도 (Specificity): %f' % (acc, prec, sen, spec))
+print('정확도 (Accuracy): %f , 정밀도 (Precision): %f , 재현율 (Recall): %f , 특이도 (Specificity): %f' % (acc, prec, sen, spec))
 
-binary = np.array([[tn,fp], [fn,tp]])
-fig, ax = plot_confusion_matrix(conf_mat = binary, show_absolute=True, show_normed=True, colorbar=True)
+fig, ax = plot_confusion_matrix(conf_mat = cm, show_absolute=True, show_normed=True, colorbar=True)
 plt.show()
 
 # ROC 커브 및 AUC 도출
